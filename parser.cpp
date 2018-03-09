@@ -113,7 +113,7 @@ int main(int argc, char *argv[]) {
       std::ifstream in(arg);
       std::ofstream out(arg + ".cpp");
       if (dset) run(in, out, d);
-      else run(in, out, d);
+      else run(in, out);
     }
   }
 }
