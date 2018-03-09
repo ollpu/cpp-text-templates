@@ -56,6 +56,7 @@ Compile first:
 ```
 ./parser [FILE]... # Parse list of files (output .cpp)
 ./parser -- # Use standard input & output
+./parser (-d|--delimiters) "{{ ! }}" ... # Use different tags
 ```
 
 Try the example!

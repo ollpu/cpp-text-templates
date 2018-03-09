@@ -85,16 +85,35 @@ int main(int argc, char *argv[]) {
     std::cerr << "Please specify files to parse (or --)." << std::endl;
     return 1;
   }
+  bool dnext = false;
+  bool dset = false;
+  std::vector<std::string> d;
   for (int vi = 1; vi < argc; ++vi) {
     std::string arg = argv[vi];
-    if (arg == "-d" || arg == "--delim") {
-      
+    if (dnext) {
+      dnext = false;
+      dset = true;
+      d.clear();
+      d.push_back("");
+      for (char c : arg) {
+        if (c == ' ') {
+          d.push_back("");
+        } else {
+          d.back().push_back(c);
+        }
+      }
+      continue;
+    }
+    if (arg == "-d" || arg == "--delimiters") {
+      dnext = true;
     } else if (arg == "--") {
-      run(std::cin, std::cout);
+      if (dset) run(std::cin, std::cout, d);
+      else run(std::cin, std::cout);
     } else {
       std::ifstream in(arg);
       std::ofstream out(arg + ".cpp");
-      run(in, out);
+      if (dset) run(in, out, d);
+      else run(in, out, d);
     }
   }
 }
