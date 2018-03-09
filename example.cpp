@@ -2,11 +2,12 @@
 #define OUT out
 #endif
 {
-OUT << "Hello world!\n";
+OUT << u8"Hello world!\n";
  for (int i = 0; i < 5; ++i) { ;
-OUT << "\n  Iteration ";
+OUT << u8"\n  Iteration ";
 OUT << ( i );
-OUT << "\n";
+OUT << u8"\n";
  } ;
-OUT << "\n";
+OUT << u8"\n";
 }
+#undef OUT

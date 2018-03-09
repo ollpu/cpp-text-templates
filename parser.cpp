@@ -74,10 +74,11 @@ void run(std::istream &in, std::ostream &out, std::vector<std::string> delimiter
     }
   }
   // Print rest of file
-  out << "OUT << \"" << buf << "\";" << std::endl;
+  out << "OUT << u8\"" << buf << "\";" << std::endl;
   buf.clear();
   // Close the scope
   out << "}" << std::endl;
+  out << "#undef OUT" << std::endl;
 }
 
 int main(int argc, char *argv[]) {
