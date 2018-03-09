@@ -61,7 +61,7 @@ void run(std::istream &in, std::ostream &out, std::vector<std::string> delimiter
             buf.resize(buf.size()-delim.size());
             if (code_active) {
               code_active = false;
-              out << buf << std::endl;
+              out << buf << ";" << std::endl;
               buf.clear();
             } else if (print_active) {
               print_active = false;
@@ -87,7 +87,9 @@ int main(int argc, char *argv[]) {
   }
   for (int vi = 1; vi < argc; ++vi) {
     std::string arg = argv[vi];
-    if (arg == "--") {
+    if (arg == "-d" || arg == "--delim") {
+      
+    } else if (arg == "--") {
       run(std::cin, std::cout);
     } else {
       std::ifstream in(arg);
