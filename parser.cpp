@@ -48,7 +48,7 @@ void run(std::istream &in, std::ostream &out, std::vector<std::string> delimiter
             if (code_active || print_active) break;
             buf.resize(buf.size()-delim.size());
             code_active = true;
-            out << "OUT << \"" << buf << "\";" << std::endl;
+            out << "OUT << u8\"" << buf << "\";" << std::endl;
             buf.clear();
           break;
           case begin_print:
