@@ -1,6 +1,6 @@
 # C++ Text Templates
 
-### What?
+## What?
 Create template `HTML` (or any kind of file) with native C++ written into it.
 `<%` starts a code block and `%>` ends it. Using `<%=` will cause the expression
 to be evaluated and output.
@@ -38,13 +38,15 @@ std::stringstream out;
 #include <file.cpp>
 ```
 
-The template will have access to all the variables in the scope it was
+The template will be executed and it will output into `out`. (change the output
+buffer name by defining macro OUT).
+It will have access to all the variables in the scope it was
 included at. The possibilites are endless.
 
 **Warning:** Text output using the `<%= %>`-tag is not escaped in any way. You
 might want to use a `stringstream` wrapper, which handles string escaping.
 
-### Using the parser
+## Using the parser
 
 Compile first:
 ```
