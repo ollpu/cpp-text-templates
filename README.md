@@ -35,7 +35,7 @@ You can now use the generated `.cpp` file in other programs like this:
 
 ```cpp
 std::stringstream out;
-#include <file.cpp>
+#include "file.cpp"
 ```
 
 The template will be executed and it will output into `out`. (change the output
