@@ -86,12 +86,12 @@ int main(int argc, char *argv[]) {
     return 1;
   }
   for (int vi = 1; vi < argc; ++vi) {
-    std::string filename = argv[vi];
-    if (filename == "--") {
+    std::string arg = argv[vi];
+    if (arg == "--") {
       run(std::cin, std::cout);
     } else {
-      std::ifstream in(filename);
-      std::ofstream out(filename + ".cpp");
+      std::ifstream in(arg);
+      std::ofstream out(arg + ".cpp");
       run(in, out);
     }
   }
