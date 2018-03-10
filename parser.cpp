@@ -24,6 +24,8 @@ void run(std::istream &in, std::ostream &out, std::vector<std::string> delimiter
         buf += "\\n";
       } else if (c == '"') {
         buf += "\\\"";
+      } else if (c == '\\') {
+        buf += "\\\\";
       } else {
         buf.push_back(c);
       }
@@ -45,7 +47,12 @@ void run(std::istream &in, std::ostream &out, std::vector<std::string> delimiter
       if (match && buf.size() > delim.size() && buf[buf.size()-delim.size()-1] == '\\') {
         match = false;
         // Turn into literal tag
-        buf.resize(buf.size()-delim.size()-1);
+        if (code_active || print_active) {
+          buf.resize(buf.size()-delim.size()-1);
+        } else {
+          // The \ was duplicated earlier...
+          buf.resize(buf.size()-delim.size()-2);
+        }
         buf += delim;
       }
       if (match) {
