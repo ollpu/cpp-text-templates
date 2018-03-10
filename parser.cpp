@@ -122,8 +122,7 @@ int main(int argc, char *argv[]) {
         }
       }
       continue;
-    }
-    if (arg == "-d" || arg == "--delimiters") {
+    } else if (arg == "-d" || arg == "--delimiters") {
       dnext = true;
     } else if (arg == "--") {
       if (dset) run(std::cin, std::cout, d);
