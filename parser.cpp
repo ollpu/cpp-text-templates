@@ -34,14 +34,19 @@ void run(std::istream &in, std::ostream &out, std::vector<std::string> delimiter
       std::string &delim = delimiters[type];
       // Prevents mathcing normal = inside code
       if (type == begin_print && buf.size() != delim.size()) continue;
-      bool match = 0;
+      bool match = false;
       if (
         buf.size() >= delim.size() &&
-        buf.compare(buf.size()-delim.size(), delim.size(), delim) == 0 &&
-        // escaping
-        !(buf.size() > delim.size() && buf[buf.size()-delim.size()-1] == '\\')
+        buf.compare(buf.size()-delim.size(), delim.size(), delim) == 0
       ) {
         match = true;
+      }
+      // Tag escaping
+      if (match && buf.size() > delim.size() && buf[buf.size()-delim.size()-1] == '\\') {
+        match = false;
+        // Turn into literal tag
+        buf.resize(buf.size()-delim.size()-1);
+        buf += delim;
       }
       if (match) {
         switch (type) {
@@ -71,6 +76,8 @@ void run(std::istream &in, std::ostream &out, std::vector<std::string> delimiter
             }
           break;
         }
+        // Don't look for other tags anymore
+        break;
       }
     }
   }

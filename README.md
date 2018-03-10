@@ -51,6 +51,8 @@ included at. The possibilites are endless.
 **Warning:** Text output using the `<%= %>`-tag is not escaped in any way. You
 might want to use a `stringstream` wrapper, which handles string escaping.
 
+Use `\<%` or `\%>` to indicate a literal tag.
+
 ## Using the parser
 
 Compile first:
@@ -61,7 +63,7 @@ Compile first:
 ```
 ./parser [FILE]... # Parse list of files (output .cpp)
 ./parser -- # Use standard input & output
-./parser (-d|--delimiters) "{{ ! }}" ... # Use different tags
+./parser (-d|--delimiters) "<% = %>" ... # Use different tags
 ```
 
 Try the example!
