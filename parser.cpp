@@ -10,6 +10,7 @@ enum DelimiterTypes {
 void run(std::istream &in, std::ostream &out, std::vector<std::string> delimiters = {"<%", "=", "%>"}) {
   out << "#ifndef OUT" << std::endl;
   out << "#define OUT out" << std::endl;
+  out << "#define TMP_OUT" << std::endl;
   out << "#endif" << std::endl;
   out << "{" << std::endl; // separate scope for the file
   std::string buf;
@@ -78,7 +79,10 @@ void run(std::istream &in, std::ostream &out, std::vector<std::string> delimiter
   buf.clear();
   // Close the scope
   out << "}" << std::endl;
+  out << "#ifdef TMP_OUT" << std::endl;
   out << "#undef OUT" << std::endl;
+  out << "#undef TMP_OUT" << std::endl;
+  out << "#endif" << std::endl;
 }
 
 int main(int argc, char *argv[]) {

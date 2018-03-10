@@ -19,6 +19,7 @@ gets turned into:
 ```cpp
 #ifndef OUT
 #define OUT out
+#define TMP_OUT
 #endif
 {
 OUT << u8"Hello world!\n";
@@ -29,7 +30,10 @@ OUT << u8"\n";
  } ;
 OUT << u8"\n";
 }
+#ifdef TMP_OUT
 #undef OUT
+#undef TMP_OUT
+#endif
 ```
 
 You can now use the generated `.cpp` file in other programs like this:
