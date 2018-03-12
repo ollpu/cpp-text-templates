@@ -12,6 +12,7 @@ Hello world!
 <% for (int i = 0; i < 5; ++i) { %>
   Iteration <%= i %>
 <% } %>
+<% #include "other.cpp" %>
 ```
 
 gets turned into:
@@ -28,6 +29,8 @@ OUT << u8"Hello world!\n";
 OUT << ( i );
 OUT << u8"\n";
  } 
+;OUT << u8"\n";
+ #include "other.cpp" 
 ;OUT << u8"\n";
 }
 #ifdef TMP_OUT

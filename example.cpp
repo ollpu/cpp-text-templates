@@ -10,6 +10,8 @@ OUT << ( i );
 OUT << u8"\n";
  } 
 ;OUT << u8"\n";
+ #include "other.cpp" 
+;OUT << u8"\n";
 }
 #ifdef TMP_OUT
 #undef OUT
