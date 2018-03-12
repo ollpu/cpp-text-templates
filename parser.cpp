@@ -2,6 +2,7 @@
 #include <iostream>
 #include <cstring>
 #include <vector>
+#include <regex>
 
 enum DelimiterTypes {
   begin, begin_print, end
@@ -74,7 +75,7 @@ void run(std::istream &in, std::ostream &out, std::vector<std::string> delimiter
             buf.resize(buf.size()-delim.size());
             if (code_active) {
               code_active = false;
-              out << buf << ";" << std::endl;
+              out << buf << std::endl << ";";
               buf.clear();
             } else if (print_active) {
               print_active = false;
